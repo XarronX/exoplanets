@@ -37,21 +37,21 @@ func TestNewTerrestrialPlanet(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet(testCase["inputName"].(string), testCase["inputDesc"].(string),
+		terrestrialPlanet, _ := NewTerrestrialPlanet(testCase["inputName"].(string), testCase["inputDesc"].(string),
 			testCase["inputDist"].(float64), testCase["inputRyds"].(float64), testCase["inputMass"].(float64))
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedName"], terrestrialPlanet.name)
-			assert.Equal(t, testCase["expectedDesc"], terrestrialPlanet.desc)
-			assert.Equal(t, testCase["expectedDist"], terrestrialPlanet.dist)
-			assert.Equal(t, testCase["expectedRdys"], terrestrialPlanet.rdys)
-			assert.Equal(t, testCase["expectedMass"], terrestrialPlanet.mass)
+			assert.Equal(t, testCase["expectedName"], terrestrialPlanet.Name)
+			assert.Equal(t, testCase["expectedDesc"], terrestrialPlanet.Desc)
+			assert.Equal(t, testCase["expectedDist"], terrestrialPlanet.Dist)
+			assert.Equal(t, testCase["expectedRdys"], terrestrialPlanet.Rdys)
+			assert.Equal(t, testCase["expectedMass"], terrestrialPlanet.Mass)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedName"], terrestrialPlanet.name)
-			assert.NotEqual(t, testCase["unexpectedDesc"], terrestrialPlanet.desc)
-			assert.NotEqual(t, testCase["unexpectedDist"], terrestrialPlanet.dist)
-			assert.NotEqual(t, testCase["unexpectedRdys"], terrestrialPlanet.rdys)
-			assert.NotEqual(t, testCase["unexpectedMass"], terrestrialPlanet.mass)
+			assert.NotEqual(t, testCase["unexpectedName"], terrestrialPlanet.Name)
+			assert.NotEqual(t, testCase["unexpectedDesc"], terrestrialPlanet.Desc)
+			assert.NotEqual(t, testCase["unexpectedDist"], terrestrialPlanet.Dist)
+			assert.NotEqual(t, testCase["unexpectedRdys"], terrestrialPlanet.Rdys)
+			assert.NotEqual(t, testCase["unexpectedMass"], terrestrialPlanet.Mass)
 		}
 	}
 }
@@ -74,20 +74,20 @@ func TestTerrestrial_UpdateName(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet(initialName, "someDesc", 0.3, 1400.0, 1200.0)
+		terrestrialPlanet, _ := NewTerrestrialPlanet(initialName, "someDesc", 0.3, 1400.0, 1200.0)
 		terrestrialPlanet.UpdateName(updatedName)
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedName"], terrestrialPlanet.name)
+			assert.Equal(t, testCase["expectedName"], terrestrialPlanet.Name)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedName"], terrestrialPlanet.name)
+			assert.NotEqual(t, testCase["unexpectedName"], terrestrialPlanet.Name)
 		}
 	}
 }
 
 func TestTerrestrial_GetName(t *testing.T) {
 	name := "testName"
-	terrestrialPlanet := NewTerrestrialPlanet(name, "someDesc", 0.3, 1400.0, 1200.0)
+	terrestrialPlanet, _ := NewTerrestrialPlanet(name, "someDesc", 0.3, 1400.0, 1200.0)
 
 	outputName := terrestrialPlanet.GetName()
 	assert.Equal(t, name, outputName)
@@ -111,20 +111,20 @@ func TestTerrestrial_UpdateDesc(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet("someName", initialDesc, 0.3, 1400.0, 1200.0)
+		terrestrialPlanet, _ := NewTerrestrialPlanet("someName", initialDesc, 0.3, 1400.0, 1200.0)
 		terrestrialPlanet.UpdateDescription(updatedDesc)
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedDesc"], terrestrialPlanet.desc)
+			assert.Equal(t, testCase["expectedDesc"], terrestrialPlanet.Desc)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedDesc"], terrestrialPlanet.desc)
+			assert.NotEqual(t, testCase["unexpectedDesc"], terrestrialPlanet.Desc)
 		}
 	}
 }
 
 func TestTerrestrial_GetDescription(t *testing.T) {
 	desc := "testName"
-	terrestrialPlanet := NewTerrestrialPlanet("someName", desc, 0.3, 1400.0, 1200.0)
+	terrestrialPlanet, _ := NewTerrestrialPlanet("someName", desc, 0.3, 1400.0, 1200.0)
 
 	outputDesc := terrestrialPlanet.GetDescription()
 	assert.Equal(t, desc, outputDesc)
@@ -148,20 +148,20 @@ func TestTerrestrial_UpdateDistance(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", initialDist, 1400.0, 1200.0)
+		terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", initialDist, 1400.0, 1200.0)
 		terrestrialPlanet.UpdateDistance(updatedDist)
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedDist"], terrestrialPlanet.dist)
+			assert.Equal(t, testCase["expectedDist"], terrestrialPlanet.Dist)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedDist"], terrestrialPlanet.dist)
+			assert.NotEqual(t, testCase["unexpectedDist"], terrestrialPlanet.Dist)
 		}
 	}
 }
 
 func TestTerrestrial_GetDistance(t *testing.T) {
 	dist := 0.3
-	terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", dist, 1400.0, 1200.0)
+	terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", dist, 1400.0, 1200.0)
 
 	outputDist := terrestrialPlanet.GetDistance()
 	assert.Equal(t, dist, outputDist)
@@ -185,20 +185,20 @@ func TestTerrestrial_UpdateRadius(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", 0.3, initialRdys, 1200.0)
+		terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", 0.3, initialRdys, 1200.0)
 		terrestrialPlanet.UpdateRadius(updatedRdys)
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedRdys"], terrestrialPlanet.rdys)
+			assert.Equal(t, testCase["expectedRdys"], terrestrialPlanet.Rdys)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedRdys"], terrestrialPlanet.rdys)
+			assert.NotEqual(t, testCase["unexpectedRdys"], terrestrialPlanet.Rdys)
 		}
 	}
 }
 
 func TestTerrestrial_GetRadius(t *testing.T) {
 	rdys := 1400.0
-	terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", 0.3, rdys, 1200.0)
+	terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", 0.3, rdys, 1200.0)
 
 	outputRdys := terrestrialPlanet.GetRadius()
 	assert.Equal(t, rdys, outputRdys)
@@ -222,28 +222,45 @@ func TestTerrestrial_UpdateMass(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, initialMass)
+		terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, initialMass)
 		terrestrialPlanet.UpdateMass(updatedMass)
 
 		if testCase["positive"].(bool) {
-			assert.Equal(t, testCase["expectedMass"], terrestrialPlanet.mass)
+			assert.Equal(t, testCase["expectedMass"], terrestrialPlanet.Mass)
 		} else {
-			assert.NotEqual(t, testCase["unexpectedMass"], terrestrialPlanet.mass)
+			assert.NotEqual(t, testCase["unexpectedMass"], terrestrialPlanet.Mass)
 		}
 	}
 }
 
 func TestTerrestrial_GetMass(t *testing.T) {
 	mass := 1200.0
-	terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, mass)
+	terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, mass)
 
 	outputMass := terrestrialPlanet.GetMass()
 	assert.Equal(t, mass, outputMass)
 }
 
 func TestTerrestrial_GetType(t *testing.T) {
-	terrestrialPlanet := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, 1200.0)
+	terrestrialPlanet, _ := NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, 1200.0)
 
 	outputType := terrestrialPlanet.GetType()
-	assert.Equal(t, t_type, outputType)
+	assert.Equal(t, TerrestrialPlanet, outputType)
+}
+
+func TestTerrestrialInvalidFields(t *testing.T) {
+	_, err := NewTerrestrialPlanet("", "someDesc", 0.3, 1400.0, 1200.0)
+	assert.Equal(t, ErrInvalidName, err)
+
+	_, err = NewTerrestrialPlanet("someName", "", 0.3, 1400.0, 1200.0)
+	assert.Equal(t, ErrInvalidDescription, err)
+
+	_, err = NewTerrestrialPlanet("someName", "someDesc", 0.0, 1400.0, 1200.0)
+	assert.Equal(t, ErrInvalidDistance, err)
+
+	_, err = NewTerrestrialPlanet("someName", "someDesc", 0.3, 0.0, 1200.0)
+	assert.Equal(t, ErrInvalidRadius, err)
+
+	_, err = NewTerrestrialPlanet("someName", "someDesc", 0.3, 1400.0, 0.0)
+	assert.Equal(t, ErrInvalidMass, err)
 }

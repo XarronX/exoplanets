@@ -1,5 +1,7 @@
 package models
 
+import "fmt"
+
 /*
 	1. name
 	2. description
@@ -9,13 +11,28 @@ package models
 	6. type of exoplanet : GasGiant or Terrestrial
 */
 
+var (
+	ErrInvalidName        = fmt.Errorf("invalid name")
+	ErrInvalidDescription = fmt.Errorf("invalid description")
+	ErrInvalidDistance    = fmt.Errorf("invalid distance")
+	ErrInvalidRadius      = fmt.Errorf("invalid radius")
+	ErrInvalidMass        = fmt.Errorf("invalid mass")
+)
+
+const (
+	GasGiantPlanet    ExoPlanetType = "gasGiant"
+	TerrestrialPlanet ExoPlanetType = "terrestrial"
+)
+
+type ExoPlanetType string
+
 type ExoPlanet interface {
 	GetName() string        // returns name of the exoplanet
 	GetDescription() string // returns Description of the exoplanet
 	GetDistance() float64   // returns distance from earth of the exoplanet
 	GetRadius() float64     // returns radius of the exoplanet
 	GetMass() float64       // returns mass of the exoplanet
-	GetType() string        // returns type of the exoplanet
+	GetType() ExoPlanetType // returns type of the exoplanet
 }
 
 // g = (m/r^2)
